@@ -43,8 +43,8 @@ module Paperclip
 				log("[paperclip] Writing files #{@queued_for_write.count}")
 				@queued_for_write.each do |style, file|
 					log("[paperclip] Writing files for ") if respond_to?(:log)
-					myfile = file.open
-					response = dropbox_client.put_file("/Public#{File.dirname(path(style))}/#{File.basename(path(style))}", myfile)
+					#myfile = file.open
+					response = dropbox_client.put_file("/Public#{File.dirname(path(style))}/#{File.basename(path(style))}", file.read)
 				end
 				@queued_for_write = {}
 			end
